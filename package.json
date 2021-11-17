@@ -1,5 +1,5 @@
 {
-  "name": "my-vs",
+	"name": "my-vs",
 	"displayName": "my-vs",
 	"description": "测试学使用vscode插件",
 	"version": "0.0.1",
@@ -10,15 +10,41 @@
 		"Other"
 	],
 	"activationEvents": [
-        "onCommand:my-vs.helloWorld"
+		"onCommand:xy.nav",
+		"onCommand:xy.progress"
 	],
-	"main": "./extension.js",
+	"main": "./src/index.js",
 	"contributes": {
-		"commands": [{
-            "command": "my-vs.helloWorld",
-            "title": "Hello World"
-
-		}]
+		"commands": [
+			{
+				"command": "xy.nav",
+				"title": "点我进行导航操作"
+			},
+			{
+				"command": "xy.progress",
+				"title": "显示进度条"
+			}
+		],
+		"snippets": [
+			{
+				"language": "vue",
+				"path": "./src/sn-snippets.json"
+			}
+		],
+		"menus": {
+			"editor/context": [
+				{
+					"when": "editorFocus",
+					"command": "xy.nav",
+					"group": "navigation"
+				},
+				{
+					"when": "editorFocus",
+					"command": "xy.progress",
+					"group": "navigation"
+				}
+			]
+		}
 	},
 	"scripts": {
 		"lint": "eslint .",
@@ -26,15 +52,14 @@
 		"test": "node ./test/runTest.js"
 	},
 	"devDependencies": {
-        "@types/vscode": "^1.62.0",
-        "@types/glob": "^7.1.4",
-        "@types/mocha": "^9.0.0",
-        "@types/node": "14.x",
-        "eslint": "^7.32.0",
-        "glob": "^7.1.7",
-        "mocha": "^9.1.1",
-        "typescript": "^4.4.3",
-        "@vscode/test-electron": "^1.6.2"
-    }
-
+		"@types/vscode": "^1.62.0",
+		"@types/glob": "^7.1.4",
+		"@types/mocha": "^9.0.0",
+		"@types/node": "14.x",
+		"eslint": "^7.32.0",
+		"glob": "^7.1.7",
+		"mocha": "^9.1.1",
+		"typescript": "^4.4.3",
+		"@vscode/test-electron": "^1.6.2"
+	}
 }
